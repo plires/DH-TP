@@ -21,12 +21,18 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
-	Route::resource('products','ProductsController');
-	Route::resource('categories','CategoriesController');
-	Route::resource('document_types','DocumentTypesController');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::resource('products', 'ProductsController');
+    Route::resource('categories', 'CategoriesController');
+    Route::resource('document_types', 'DocumentTypesController');
 });
 
-Route::group(['prefix' => 'user', 'namespace' => 'User'], function(){
-	Route::resource('products','ProductsController');
+Route::group(['prefix' => 'user', 'namespace' => 'User' ], function () {
+    Route::resource('products', 'ProductsController');
 });
+
+// Asi es para que deba estar logueado antes de ingresar
+// Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'] ], function () {
+//     Route::resource('products', 'ProductsController');
+// });
