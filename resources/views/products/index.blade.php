@@ -9,15 +9,20 @@
 @section('content')
 
   <div class="products-show-container">
-    <h2>Muestra de producto</h2>
+    <h2>Muestra de producto por Usuario</h2>
 
-  {{-- {{  dd($img->src)}} --}}
-    <img  src='{{ $img->src }}'>
+
+
     <ul>
+      @foreach ($products as $product)
+
+
       <li> {{ $product->title}} </li>
       <li> {{ $product->description}} </li>
       <li> {{ $product->price}} </li>
       <li> {{ $product->available}} </li>
+      <img src="{{ $product->images->src }}" alt="">
+    @endforeach
     </ul>
 
 </div>

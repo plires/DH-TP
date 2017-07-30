@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Image;
@@ -19,6 +20,10 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        $id = Auth::id();
+        $products = Product::with('Images')->where('user_id', $id)->get();
+
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -47,6 +52,8 @@ class ProductsController extends Controller
             'src' => $url
           ]);
 
+          $id = Auth::id();
+
           $product = Product::create([
             'title' => request()->title,
             'slug' => str_slug(request()->title),
@@ -54,7 +61,7 @@ class ProductsController extends Controller
             'price' => request()->price,
             'image_id'=> $image->id,
             'category_id' => request()->category_id,
-            'user_id'=> 2,
+            'user_id'=> $id,
             'available' => request()->available,
             ]);
 
@@ -62,8 +69,7 @@ class ProductsController extends Controller
 
           $image->save();
 
-
-          return redirect()->route('products.create');
+          return redirect()->route('products.show', ['id' =>  $product->id]);
       }
 
     /**
@@ -90,7 +96,10 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::all();
+
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -100,9 +109,33 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NewProductRequest $request, $id)
     {
-        //
+        $product = Product::find($id);
+
+
+        $imgUrl = $request->file('img')->store('public');
+        $url = Storage::url($imgUrl);
+
+        $image = Image::create([
+          'src' => $url
+        ]);
+
+        $idUser = Auth::id();
+
+        $product->title = request()->title;
+        $product->slug = str_slug(request()->title);
+        $product->description = request()->description;
+        $product->price = request()->price;
+        $product->image_id = $image->id;
+        $product->category_id = request()->category_id;
+        $product->user_id = $idUser;
+        $product->available = request()->available;
+
+        $product->save();
+
+
+        return redirect()->route('products.show', ['id' =>  $id]);
     }
 
     /**
