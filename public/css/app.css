@@ -4,8 +4,14 @@
     color: #ffffff;
 }
 
+button:hover, button:focus, .button:hover, .button:focus {
+    background-color: #414141; }
+  button:hover, button:focus, .button:hover, .button:focus {
+    color: #fcc112; }
+
 span.error, small.error {
   font-style: normal;
+  border-radius: 5px!important;
 }
 
 .button {
@@ -71,6 +77,18 @@ a {
 .container{
 	width: 95%;
 	margin: auto;
+}
+
+h1.back {
+	font-size: 1.75em;
+	color: #646464;
+}
+
+h2.back {
+	font-size: 1.25em;
+	color: #fcc112;
+	background-color: #414141;
+	padding: 5px 10px;
 }
 
 /* HEADER START */
@@ -821,6 +839,13 @@ section.fondo_color_principal{padding: 10px;margin-bottom: 30px; overflow: hidde
 .btn-link {color: #464646;}
 .btn-link:hover {color: #fcc112;}
 .cien{width: 100%;}
+.boton_editar, .boton_eliminar{margin: 0;display: inline-block; border-radius: 5px; padding: 10px; margin-left: 10px; float: right;}
+.boton_editar:hover, .boton_eliminar:hover{opacity: 0.6!important;}
+.boton_editar{ background-color: #e6e6e6; color: #646565;}
+.boton_eliminar{background-color: #f48580; color: #7d403f;}
+.imagen_products_show{width: 60px!important;}
+.link_products_show:hover{color:#fcc112;}
+
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 /*************************************************** COMUNES A TODO EL SITIO END ****************************************************/
 /*----------------------------------------------------------------------------------------------------------------------------------*/

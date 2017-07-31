@@ -10,7 +10,7 @@
    <div class="row">
       <div class="small-12 columns">
          <h1 class="back margin_top_15 text_center">Backend Admin</h1>
-         <h2 class="back">Categorias del sitio</h2>
+         <h2 class="back">Tipos de documentos permitidos</h2>
       </div>
    </div>
    <div class="row">
@@ -19,17 +19,14 @@
             <tbody>
             <tr>
                <th>Nombre</th>
-               <th>Slug</th>
                <th>Acciones</th>
             </tr>
-               @foreach($categories as $category)
-                  <tr data-id="{{ $category->id }}">
-                     <td>{{ $category->name }}</td>
-                     <td>{{ $category->slug }}</td>
+               @foreach($documentTypes as $documentType)
+                  <tr data-id="{{ $documentType->id }}">
+                     <td>{{ $documentType->name }}</td>
                      <td>
                         <button class="boton_cat boton_eliminar">Eliminar</button>
-                        <button class="boton_editar"><a href="{{ route('categories.edit', ['category'=> $category->id] )}}">Editar</a></button>
-                        <button class="boton_editar"><a href="{{ route('categories.show', ['category'=> $category->id] )}}">Mostrar</a></button>
+                        <button class="boton_editar">Editar</button>
                      </td>
                   </tr>
                @endforeach
@@ -40,7 +37,7 @@
 
    <div class="row">
       <div class="small-12 medium-4 columns medium-centered margin_top_15 text_center">
-         <a href="{{ route('categories.create') }}"><button class="small button"><i class="ion-plus-circled"></i> Agregar Categoría</button></a>
+         <a href="{{ route('document_types.create') }}"><button class="small button"><i class="ion-plus-circled"></i> Agregar Categoría</button></a>
       </div>
    </div>
 
@@ -50,7 +47,7 @@
 
    @include('footer.footer')
 
-<form action="{{ route('categories.destroy', ':CATEGORY_ID') }}" method="DELETE" id="form-delete">
+<form action="{{ route('document_types.destroy', ':CATEGORY_ID') }}" method="DELETE" id="form-delete">
 <input name="_method" type="hidden" value="DELETE">
 {{ csrf_field() }}
 </form>

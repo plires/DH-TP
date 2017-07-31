@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\DocumentType;
 
 /*
 public function __construct()
@@ -22,7 +23,8 @@ class documentTypesController extends Controller
      */
     public function index()
     {
-        //
+        $documentTypes = DocumentType::all();
+        return view('admin.documents.index', compact('documentTypes'));
     }
 
     /**

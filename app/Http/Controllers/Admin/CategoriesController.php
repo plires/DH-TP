@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryCreateRequest;
 use App\Category;
 use App\Product;
 
@@ -35,7 +36,8 @@ class categoriesController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.categories.create', compact('categories'));
     }
 
     /**
@@ -44,10 +46,16 @@ class categoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryCreateRequest $request)
     {
-        $categories = Category::all();
-        return view('admin.categories.store', compact('categories'));
+        $name = $request->input('category');
+        $slug = str_slug($name);
+
+        $usuario = Category::create([
+            'name' => $name,
+            'slug' => $slug
+        ]);
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -58,9 +66,10 @@ class categoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        $products = Product::where('category_id', $id)->paginate(10);
+        $category = Category::where('id', $id)->first();
+        return view('admin.categories.show', compact('category', 'products'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -69,7 +78,8 @@ class categoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::where('id', $id)->first();
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -81,7 +91,13 @@ class categoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name = $request->input('category');
+        $slug = str_slug($name);
+
+        $usuario = Category::create([
+            'name' => $name,
+            'slug' => $slug
+        ]);
     }
 
     /**
@@ -90,8 +106,14 @@ class categoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        Category::find($id)->delete();
+
+        $message = 'La categoria fue borrada.';
+
+        if ($request->ajax()) {
+            return $message;
+        }
     }
 }
