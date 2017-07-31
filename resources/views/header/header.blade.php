@@ -35,7 +35,7 @@
 
                 <li><a href="#"><i class="ion-android-cart"></i>Mi Carrito</a></li>
 
-                <li><a href=#"><i class="ion-person"></i>Mi Cuenta</a></li>
+                <li><a href="#"><i class="ion-person"></i>Mi Cuenta</a></li>
 
                 <li><a href="#"><i class="ion-email"></i>Contacto</a></li>
                 <li>
@@ -46,9 +46,9 @@
                         <i class="ion-ios-arrow-forward"></i>
                         </button>
                         <div class="desplega-content">
-                            <a href="#">Rubias</a>
-                            <a href="#">Rojas</a>
-                            <a href="#">Negras</a>
+                            @foreach($categoriesMenu as $category)
+                                <a href="{{ route('categories.show', ['category'=> $category->id] )}}">{{ $category->name }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </li>
@@ -61,15 +61,22 @@
                             <i class="ion-ios-arrow-forward"></i>
                             </button>
                             <div class="desplega-content">
-                                <a href="#">Mis productos</a>
-                                <a href="#">Favoritos</a>
+                                <a href="{{ route('products.index') }}">Mis productos</a>
+                                <a href="#">Mis Favoritos</a>
                             </div>
                         @endif
                         
                     </div>
                 </li>
                 @if (Auth::user() && Auth::user()->admin == 1)
-                    <li class="#"><a href="admin.php"><i class="ion-gear-b"></i>Backend Admin</a></li>
+                    <div class="desplega">
+                        <button onclick="window.location.href='admin.php'" class="dropbtn">Backend Admin</button>
+                        <div class="desplega-content">
+                            <a href="{{ route('categories.index') }}">Modificar Categorias</a>
+                            <a href="#">Modificar Tipos de Documento</a>
+                            <a href="#">Modificar Productos</a>
+                        </div>
+                    </div>
                 @endif
                 <li><a href="#"><i class="ion-social-facebook"></i>Facebook</a></li>
                 <li><a href="#"><i class="ion-social-twitter"></i>Twitter</a></li>
@@ -149,24 +156,30 @@
                 <div class="desplega">
                     <button class="dropbtn">Categorias</button>
                     <div class="desplega-content">
-                        <a href="#">Rubias</a>
-                        <a href="#">Rojas</a>
-                        <a href="#">Negras</a>
+                        @foreach($categoriesMenu as $category)
+                            <a href="{{ route('categories.show', ['category'=> $category->id] )}}">{{ $category->name }}</a>
+                        @endforeach
                     </div>
                 </div>
                 <div class="desplega">
                     @if (Auth::user() && Auth::user()->admin == 0)
                         <button class="dropbtn">Mi cuenta</button>
                         <div class="desplega-content">
-                            <a href="#">Mis productos</a>
+                            <a href="{{ route('products.index') }}">Mis productos</a>
                             <a href="#">Favoritos</a>
                         </div>
                     @endif
                 </div>
-
-                @if (Auth::user() && Auth::user()->admin == 1)
-                    <button onclick="window.location.href='admin.php'" class="dropbtn">Backend Admin</button>
-                @endif
+                <div class="desplega">
+                    @if (Auth::user() && Auth::user()->admin == 1)
+                        <button onclick="window.location.href='admin.php'" class="dropbtn">Backend Admin</button>
+                        <div class="desplega-content">
+                            <a href="{{ route('categories.index') }}">Modificar Categorias</a>
+                            <a href="#">Modificar Tipos de Documento</a>
+                            <a href="#">Modificar Productos</a>
+                        </div>
+                    @endif
+                </div>
             </div>
             <a class="carro-icon" href="#"><i class="ion-ios-cart"></i> </a>
             <a class="tema-icon" href="#" onclick="cambiarArchivoCss('css/theme_blue.css')" title="Cambiar tema del sitio"><i class="ion-arrow-swap"></i> </a>

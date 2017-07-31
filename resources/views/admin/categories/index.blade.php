@@ -76,11 +76,11 @@
          $.post(url, data, function(result){
             alert(result);            
          }).fail(function(){
-            alert('Error en el servidor, el usuario no fue eliminado. Intente mas tarde.');
+            alert('Error en el servidor o la categoria tiene productos asosciados. Intente mas tarde o elimine dichos productos.');
             row.fadeIn();
          });
-      })
-   })
+      });
+   });
 </script>   
 
 @endsection

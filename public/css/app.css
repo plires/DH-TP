@@ -845,6 +845,20 @@ section.fondo_color_principal{padding: 10px;margin-bottom: 30px; overflow: hidde
 .boton_eliminar{background-color: #f48580; color: #7d403f;}
 .imagen_products_show{width: 60px!important;}
 .link_products_show:hover{color:#fcc112;}
+.favoritos_home {
+	position: absolute;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	font-size: 1em;
+	padding: 5px 10px 5px;
+	border-radius: 15px;
+	color: #414141;
+	background-color: #fcc112;
+	top: 55px;
+	right: 40px;
+	box-shadow: 1px 1px 3px #888888;
+}
 
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 /*************************************************** COMUNES A TODO EL SITIO END ****************************************************/

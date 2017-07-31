@@ -8,14 +8,6 @@ use App\Http\Requests\CategoryCreateRequest;
 use App\Category;
 use App\Product;
 
-/*
-public function __construct()
-{
-    $this->middleware('auth');
-    $this->middleware('log', ['only' => ['store', 'update', 'destroy']]);
-}
-*/
-
 class categoriesController extends Controller
 {
     /**

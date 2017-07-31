@@ -47,6 +47,7 @@
           <div class="item_descuento boton_gris">
             20 % OFF
           </div>
+            <a title="Agregar a Favoritos" class="favoritos_home" href="#"><i class ="ion-flag"></i></a>
           <h2>{{ $product->title }}</h2>
           <p title="Aroma, color y cuerpo intenso. Alto contenido de lúpulo y con malta seleccionada." >
             {{ $product->description }}

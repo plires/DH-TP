@@ -37,6 +37,7 @@
     <script>
       $(document).foundation();
     </script>
+    @yield('scripts')
   </body>
 
   

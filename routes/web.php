@@ -1,5 +1,8 @@
 <?php
 
+use App\Category;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,27 +13,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+view()->share('categoriesMenu', Category::all());
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/prueba', 'HomeController@index')->name('prueba');
 Route::get('/faq', 'FaqController@index')->name('faq');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth.admin']], function () {
     Route::resource('products', 'ProductsController');
     Route::resource('categories', 'CategoriesController');
     Route::resource('document_types', 'DocumentTypesController');
 });
-
-// Route::group(['prefix' => 'user', 'namespace' => 'User' ], function () {
-//     Route::resource('products', 'ProductsController');
-// });
 
 // Asi es para que deba estar logueado antes de ingresar
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'] ], function () {
