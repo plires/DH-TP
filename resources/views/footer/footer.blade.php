@@ -1,14 +1,12 @@
 <!--fondo de color full width footer start -->
 <div id="footer">
 
-  <!--container start -->
-  <div class="container">
 
     <!--footer start -->
-    <footer class="main-footer">
+    <footer class="row">
 
       <!--Primer Bloque Start-->
-      <div class="main-footer-firstblock">
+      <div class="primary small-12 medium-6 columns">
         <div class="logo">
           <img src="{{ asset('images/logo-footer.png') }}" alt="logo-footer">
         </div>
@@ -48,7 +46,7 @@
 
 
       <!--Segundo Bloque Start-->
-      <div class="main-footer-secondblock">
+      <div class="secundary small-12 medium-6 columns">
         <h2>Contacto</h2>
         <form action="script.php" method="post">
           <input type="text" name="nombre_y_apellido" required placeholder="Apellido y Nombre">
@@ -57,14 +55,11 @@
           <button type="Submit" class="submit-button">ENVIAR</button>
         </form>
       </div>
-      <!--Segundo Bloque Start-->
+      <!--Segundo Bloque end-->
 
     </footer>
     <!--footer end -->
 
-
-  </div>
-  <!--container end -->
 
 </div>
 <!--fondo de color full width footer end -->

@@ -19,14 +19,14 @@
         </div>
         <nav class='main-menu'>
             <ul>
-                <li><a class="login" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="{{ url('logout') }}">
+                <li><a class="login" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="{{ route('logout' )}}">
                     <i class="ion-android-exit"></i> Logout</a>
                 </li>
                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
                 <li><a href="{{ url('/') }}"><i class="ion-home"></i>Home</a></li>
-                <li><a href="{{ url('faq') }}"><i class="ion-help"></i>Faqs</a></li>
+                <li><a href="{{ url('/faq') }}"><i class="ion-help"></i>Faqs</a></li>
                 <li><a href="{{ url('register') }}"><i class="ion-clipboard"></i>Registrate</a></li>
 
                 <li>
@@ -91,7 +91,7 @@
             <a href="#" class='main-menu-button'><i class="ion-navicon-round"></i></a>
             <nav class="secondary-menu">
                 <ul>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="{{ url('faq') }}">Faqs</a></li>
                     <li><a href="{{ url('register') }}">Registrate</a></li>
                     <li><a href="#">Contacto</a></li>

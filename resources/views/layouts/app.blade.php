@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/foundation.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/responsive-tables.css') }}" />
     <script src="{{ asset('js/vendor/modernizr.js') }}"></script>
     <script src="{{ asset('js/responsive-tables.js') }}"></script>
+    @yield('estra_css')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 
   </head>
 

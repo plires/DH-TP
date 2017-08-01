@@ -17,12 +17,15 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (!Auth::user()) {
+            return redirect()->guest('home');
+        }
 
         if (Auth::user()->admin != 1) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('login');
+                return redirect()->guest('home');
             }
         }
 
