@@ -35,10 +35,10 @@ class NewProductRequest extends FormRequest
     public function messages()
     {
         return [
-     'title.required' => 'El título de producto es obligatorio',
+     'title.required' => 'El título del producto es obligatorio',
      'description.required' => 'La descripción es obligatoria',
      'price.required' => 'El precio es obligatorio',
-     'img.required' => 'Ingrese al menos 7 dígitos',
+     'img.required' => 'Suba una imágen para el producto',
       ];
     }
 }

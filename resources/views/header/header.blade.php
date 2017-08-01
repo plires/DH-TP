@@ -62,6 +62,7 @@
                             </button>
                             <div class="desplega-content">
                                 <a href="{{ route('products.index') }}">Mis productos</a>
+                                <a href="{{ route('products.create') }}">Crear producto</a>
                                 <a href="#">Mis Favoritos</a>
                             </div>
                         @endif
@@ -166,6 +167,7 @@
                         <button class="dropbtn">Mi cuenta</button>
                         <div class="desplega-content">
                             <a href="{{ route('products.index') }}">Mis productos</a>
+                            <a href="{{ route('products.create') }}">Crear producto</a>
                             <a href="#">Favoritos</a>
                         </div>
                     @endif

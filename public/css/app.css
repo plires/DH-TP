@@ -781,7 +781,7 @@ fieldset{
   margin-bottom: 30px;
 }
 
-.secundary .submit-button{
+.secundary .submit-button, .boton_form{
   background-color: rgb(48, 48, 48);
   border-radius: 5px;
   padding: 10px;
@@ -843,6 +843,7 @@ section.fondo_color_principal{padding: 10px;margin-bottom: 30px; overflow: hidde
 .padding_top_50 {padding-top: 50px;}
 .margin_bottom_30 {margin-bottom: 30px;}
 .margin_top_15 {margin-top: 15px;}
+.margin_top_30 {margin-top: 30px;}
 .no_visible {display: none!important;}
 .btn-link {color: #464646;}
 .btn-link:hover {color: #fcc112;}
@@ -869,6 +870,12 @@ ul.pagination{position: relative; left: 30%; margin-bottom: 30px;}
 }
 .link_products_show:hover{color:#fcc112;}
 .hr_separador{margin: 0!important; margin: 5px 0!important;}
+.errores_panel{display: inline-block;color: #826061; background-color: #F6B2B6; border: solid
+ 1px #826061; border-radius: 5px; margin-bottom: 30px; text-align: left; padding: 10px 20px;}
+ .errores_panel ul{font-size: 0.85em;}
+ .h3_product_show{margin: 0; font-size: 1.25em; color:#414141; background-color: #DADADA;
+ 	padding: 3px 10px; }
+
 
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 /*************************************************** COMUNES A TODO EL SITIO END ****************************************************/

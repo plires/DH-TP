@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Category;
+use App\User;
 use App\Image;
 use App\Product;
 use App\Http\Requests\NewProductRequest;
@@ -34,8 +35,10 @@ class ProductsController extends Controller
      */
     public function create()
     {
+
         $categories = Category::all();
-        return view('products.create', compact('categories'));
+        $user = Auth::user();
+        return view('products.create', compact('categories', 'user'));
     }
 
     /**
@@ -83,10 +86,7 @@ class ProductsController extends Controller
     {
         $product = Product::find($id);
 
-        $img = Image::find($product->image_id);
-
-
-        return view('products.show', compact('product', 'img'));
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -147,6 +147,6 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 }
