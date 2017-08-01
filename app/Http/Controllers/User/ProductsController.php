@@ -25,7 +25,7 @@ class ProductsController extends Controller
         $user = Auth::user();
         $products = Product::with('Images')->where('user_id', $id)->get();
 
-        return view('products.index', compact('products' ,'user'));
+        return view('products.index', compact('products', 'user'));
     }
 
     /**
@@ -35,7 +35,6 @@ class ProductsController extends Controller
      */
     public function create()
     {
-
         $categories = Category::all();
         $user = Auth::user();
         return view('products.create', compact('categories', 'user'));
@@ -50,7 +49,10 @@ class ProductsController extends Controller
       public function store(NewProductRequest $request)
       {
           $imgUrl = $request->file('img')->store('public');
+
           $url = Storage::url($imgUrl);
+
+          // dd($url);
 
           $image = Image::create([
             'src' => $url
@@ -147,6 +149,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->action('User\ProductsController@index');
     }
 }

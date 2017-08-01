@@ -13,19 +13,20 @@
 
       <div class="small-12 medium-10 medium-centered columns margin_top_15 text_center">
 
-         <h3>Productos de: {{ $user->name }}</h3>
+         <h3>Todos los Productos</h3>
          <table class="responsive cien margin_top_15">
             <tbody>
                <tr>
                   <th>Titulo</th>
                   <th>Precio</th>
                   <th>Imágen</th>
+                  <th>Usuario</th>
                </tr>
                @foreach($products as $product)
                   @if(!isset($product->id))
                      <tr>
                         <td>Sin productos</td>
-                        <td>-</td>
+                        <td>- </td>
                      </tr>
                   @else
                      <tr data-id="{{ $product->id }}">
@@ -39,6 +40,9 @@
                           <a href="{{ route('products.show', ['id'=> $product->id] )}}">
                             <img class="imagen_products_show" src="{{ $product->images->src }}" width="60px" height="60px" alt="{{ $product->title }}">
                           </a>
+                        </td>
+                        <td>
+                          <a href="#"> {{ $product->user->email }}</a>
                         </td>
                      </tr>
                   @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
 
 /*
 public function __construct()
@@ -22,7 +23,9 @@ class productsController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with('User')->get();
+
+        return view('admin/products.index', compact('products'));
     }
 
     /**
@@ -32,7 +35,6 @@ class productsController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -54,7 +56,11 @@ class productsController extends Controller
      */
     public function show($id)
     {
-        //
+        // $product = Product::find($id);
+        $product= Product::with('User', 'Images')->where('id', $id)->get()->first();
+
+
+        return view('admin/products.show', compact('product'));
     }
 
     /**

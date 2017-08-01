@@ -23,11 +23,11 @@
   <div class="row">
     <div class="small-12 medium-6 columns">
       <h3 class="h3_product_show">Imágen</h3>
-      <img  src='{{ $product->images->src }}'>      
+      <img  src='{{ $product->images->src }}'>
     </div>
     <div class="small-12 medium-6 columns">
       <h3 class="h3_product_show">Titulo</h3>
-      <p>{{ $product->title }}</p> 
+      <p>{{ $product->title }}</p>
       <h3 class="h3_product_show">Categoría</h3>
       <p>{{ $product->category->name }}</p>
       <h3 class="h3_product_show">Dueño del producto</h3>
@@ -35,14 +35,14 @@
       <h3 class="h3_product_show">Existencias</h3>
       <p>{{ $product->available }}</p>
       <h3 class="h3_product_show">Precio</h3>
-      <p>{{ $product->price }}</p>    
+      <p>{{ $product->price }}</p>
     </div>
   </div>
 
   <div class="row margin_top_30">
     <div class="small-12 columns">
       <h3 class="h3_product_show">Descipción</h3>
-      <p>{{ $product->description }}</p>      
+      <p>{{ $product->description }}</p>
     </div>
   </div>
   <!--Detalle producto end-->
@@ -52,16 +52,17 @@
   <!--Acciones start-->
   <div class="row margin_bottom_30 margin_top_30">
     <div class="small-12 columns">
-
+      <form action="{{ route('products.destroy', ['id'=> $product->id] )}}" method='POST'>
+        {{ method_field('DELETE') }}
         {{ csrf_field() }}
         <button type="submit" class="boton_cat boton_eliminar">
-          <a href="{{ route('products.destroy', ['products'=> $product->id] )}}">Eliminar</a>
-        </button>        
+          Eliminar
+        </button>
       </form>
 
         <button type="submit" class="boton_editar">
           <a href="{{ route('products.edit', ['products'=> $product->id] )}}">Editar</a>
-        </button>      
+        </button>
 
     </div>
   </div>
