@@ -62,6 +62,7 @@ class categoriesController extends Controller
         $category = Category::where('id', $id)->first();
         return view('admin.categories.show', compact('category', 'products'));
     }
+    
     /**
      * Show the form for editing the specified resource.
      *

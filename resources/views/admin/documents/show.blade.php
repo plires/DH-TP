@@ -10,28 +10,31 @@
    <div class="row">
       <div class="small-12 columns">
          <h1 class="back margin_top_15 text_center">Backend Admin</h1>
-         <h2 class="back">SHOW-Mostrar Categoria individual</h2>
+         <h2 class="back">Tipo de Documentos</h2>
       </div>
    </div>
    <div class="row">
       <div class="small-12 medium-10 medium-centered columns margin_top_15 text_center">
-         <h3>Productos de la categoría: {{ $category->name }}</h3>
+         <h3>Usuarios con tipo de documento {{ $documentType->name }}</h3>
          <table class="responsive cien margin_top_15">
             <tbody>
                <tr>
-                  <th>Productos</th>
-                  <th>Precio</th>
+                  <th>Nombre y Apellido</th>
+                  <th>Email</th>
+                  <th>Teléfono</th>
                </tr>
-               @foreach($products as $product)
-                  @if(!isset($product->id))
+               @foreach($users as $user)
+                  @if(!isset($user->id))
                      <tr>
-                        <td>Sin productos</td>
+                        <td>Sin Usuarios</td>
+                        <td>-</td>
                         <td>-</td>
                      </tr>
                   @else
-                     <tr data-id="{{ $product->id }}">
-                        <td>{{ $product->title }}</td>
-                        <td>{{ $product->price }}</td>
+                     <tr data-id="{{ $user->id }}">
+                        <td>{{ $user->surname .', '. $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->phone }}</td>
                      </tr>
                   @endif
                @endforeach
@@ -42,13 +45,13 @@
 
    <div class="row">
     <div class="small-12 medium-4 medium-centered columns text_center text_center">
-      {{ $products->links() }}
+      {{ $users->links() }}
     </div>
   </div>
 
    <div class="row">
       <div class="small-12 medium-4 columns medium-centered margin_top_15 text_center">
-         <a href="{{ route('categories.index') }}"><button class="small button">
+         <a href="{{ route('document_types.index') }}"><button class="small button">
             <i class="ion-arrow-left-a"></i> Volver</button>
          </a>
       </div>

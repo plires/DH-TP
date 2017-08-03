@@ -4,15 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DocumentTypeCreateRequest;
 use App\DocumentType;
-
-/*
-public function __construct()
-{
-    $this->middleware('auth');
-    $this->middleware('log', ['only' => ['store', 'update', 'destroy']]);
-}
-*/
+use App\User;
 
 class documentTypesController extends Controller
 {
@@ -34,7 +28,8 @@ class documentTypesController extends Controller
      */
     public function create()
     {
-        //
+        $documentTypes = DocumentType::all();
+        return view('admin.documents.create', compact('documentTypes'));
     }
 
     /**
@@ -43,9 +38,14 @@ class documentTypesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DocumentTypeCreateRequest $request)
     {
-        //
+        $name = $request->input('document');
+
+        DocumentType::create([
+            'name' => $name
+        ]);
+        return redirect()->route('document_types.index');
     }
 
     /**
@@ -56,7 +56,9 @@ class documentTypesController extends Controller
      */
     public function show($id)
     {
-        //
+        $users = User::where('document_id', $id)->paginate(10);
+        $documentType = DocumentType::where('id', $id)->first();
+        return view('admin.documents.show', compact('users', 'documentType'));
     }
 
     /**
@@ -67,7 +69,8 @@ class documentTypesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ducumentType = DocumentType::where('id', $id)->first();
+        return view('admin.documents.edit', compact('ducumentType'));
     }
 
     /**
@@ -79,7 +82,11 @@ class documentTypesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name = $request->input('document');
+
+        DocumentType::create([
+            'name' => $name
+        ]);
     }
 
     /**
@@ -88,8 +95,14 @@ class documentTypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        DocumentType::find($id)->delete();
+
+        $message = 'El tipo de documento fue eliminado.';
+
+        if ($request->ajax()) {
+            return $message;
+        }
     }
 }

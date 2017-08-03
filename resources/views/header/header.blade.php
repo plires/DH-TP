@@ -74,7 +74,7 @@
                         <button onclick="window.location.href='admin.php'" class="dropbtn">Backend Admin</button>
                         <div class="desplega-content">
                             <a href="{{ route('categories.index') }}">Modificar Categorias</a>
-                            <a href="#">Modificar Tipos de Documento</a>
+                            <a href="{{ route('document_types.index') }}">Modificar Tipos de Documento</a>
                             <a href="#">Modificar Productos</a>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                         <button onclick="window.location.href='admin.php'" class="dropbtn">Backend Admin</button>
                         <div class="desplega-content">
                             <a href="{{ route('categories.index') }}">Modificar Categorias</a>
-                            <a href="#">Modificar Tipos de Documento</a>
+                            <a href="{{ route('document_types.index') }}">Modificar Tipos de Documento</a>
                             <a href="#">Modificar Productos</a>
                         </div>
                     @endif

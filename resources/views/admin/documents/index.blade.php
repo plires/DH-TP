@@ -26,7 +26,12 @@
                      <td>{{ $documentType->name }}</td>
                      <td>
                         <button class="boton_cat boton_eliminar">Eliminar</button>
-                        <button class="boton_editar">Editar</button>
+                        <button class="boton_editar">
+                           <a href="{{ route('document_types.edit', ['document_type'=> $documentType->id] )}}">Editar</a>
+                        </button>
+                        <button class="boton_editar">
+                           <a href="{{ route('document_types.show', ['document_type'=> $documentType->id] )}}">Mostrar</a>
+                        </button>
                      </td>
                   </tr>
                @endforeach
@@ -37,7 +42,7 @@
 
    <div class="row">
       <div class="small-12 medium-4 columns medium-centered margin_top_15 text_center">
-         <a href="{{ route('document_types.create') }}"><button class="small button"><i class="ion-plus-circled"></i> Agregar Categoría</button></a>
+         <a href="{{ route('document_types.create') }}"><button class="small button"><i class="ion-plus-circled"></i> Agregar tipo de documento</button></a>
       </div>
    </div>
 
@@ -47,7 +52,7 @@
 
    @include('footer.footer')
 
-<form action="{{ route('document_types.destroy', ':CATEGORY_ID') }}" method="DELETE" id="form-delete">
+<form action="{{ route('document_types.destroy', ':DOCUMENT_ID') }}" method="DELETE" id="form-delete">
 <input name="_method" type="hidden" value="DELETE">
 {{ csrf_field() }}
 </form>
@@ -65,7 +70,7 @@
          var id = row.data('id');
          var form = $('#form-delete');
 
-         var url = form.attr('action').replace(':CATEGORY_ID', id) ;
+         var url = form.attr('action').replace(':DOCUMENT_ID', id) ;
          var data = form.serialize();
 
          row.fadeOut();
@@ -73,11 +78,11 @@
          $.post(url, data, function(result){
             alert(result);            
          }).fail(function(){
-            alert('Error en el servidor, el usuario no fue eliminado. Intente mas tarde.');
+            alert('Error en el servidor o el tipo de documento tiene usuarios asosciados. Intente mas tarde o edite dichos usuario.');
             row.fadeIn();
          });
-      })
-   })
+      });
+   });
 </script>   
 
 @endsection

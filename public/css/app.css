@@ -850,8 +850,8 @@ section.fondo_color_principal{padding: 10px;margin-bottom: 30px; overflow: hidde
 .cien{width: 100%;}
 .boton_editar, .boton_eliminar{margin: 0;display: inline-block; border-radius: 5px; padding: 10px; margin-left: 10px; float: right;}
 .boton_editar:hover, .boton_eliminar:hover{opacity: 0.6!important;}
-.boton_editar{ background-color: #e6e6e6; color: #646565;}
-.boton_eliminar{background-color: #f48580; color: #7d403f;}
+.boton_editar{ background-color: #e6e6e6; color: #646565; font-size: 0.75em;}
+.boton_eliminar{background-color: #f48580; color: #7d403f; font-size: 0.75em;}
 .imagen_products_show{width: 60px!important;}
 ul.pagination{position: relative; left: 30%; margin-bottom: 30px;}
 .favoritos_home {
