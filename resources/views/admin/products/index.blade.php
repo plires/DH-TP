@@ -11,12 +11,15 @@
   <div class="row">
     <div class="small-12 columns">
 
-      <div class="small-12 medium-10 medium-centered columns margin_top_15 text_center">
+      <div class="small-12 columns margin_top_15 ">
 
-         <h3>Todos los Productos</h3>
+         <h1 class="back margin_top_15 text_center">Backend Admin</h1>
+         <h2 class="back">Todos los Productos</h2>
+
          <table class="responsive cien margin_top_15">
             <tbody>
                <tr>
+                  <th>#</th>
                   <th>Titulo</th>
                   <th>Precio</th>
                   <th>Imágen</th>
@@ -27,22 +30,26 @@
                      <tr>
                         <td>Sin productos</td>
                         <td>- </td>
+                        <td>- </td>
+                        <td>- </td>
+                        <td>- </td>
                      </tr>
                   @else
                      <tr data-id="{{ $product->id }}">
+                        <td>{{ $product->id }}</td>
                         <td>
-                          <a class="link_products_show" href="{{ route('products.show', ['id'=> $product->id] )}}">
+                          <a class="link_products_show" href="{{ url('admin/products', ['id'=> $product->id]) }}">
                             {{ $product->title }}
                           </a>
-                          </td>
+                        </td>
                         <td>{{ $product->price }}</td>
                         <td>
-                          <a href="{{ route('products.show', ['id'=> $product->id] )}}">
+                          <a href="{{ url('admin/products', ['id'=> $product->id]) }}">
                             <img class="imagen_products_show" src="{{ $product->images->src }}" width="60px" height="60px" alt="{{ $product->title }}">
                           </a>
                         </td>
                         <td>
-                          <a href="#"> {{ $product->user->email }}</a>
+                          <a href="mailto:{{ $product->user->email }}"> {{ $product->user->email }}</a>
                         </td>
                      </tr>
                   @endif

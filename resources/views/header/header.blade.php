@@ -75,7 +75,7 @@
                         <div class="desplega-content">
                             <a href="{{ route('categories.index') }}">Modificar Categorias</a>
                             <a href="{{ route('document_types.index') }}">Modificar Tipos de Documento</a>
-                            <a href="#">Modificar Productos</a>
+                            <a href="{{ url('admin/products') }}">Modificar Productos</a>
                         </div>
                     </div>
                 @endif
@@ -178,7 +178,7 @@
                         <div class="desplega-content">
                             <a href="{{ route('categories.index') }}">Modificar Categorias</a>
                             <a href="{{ route('document_types.index') }}">Modificar Tipos de Documento</a>
-                            <a href="#">Modificar Productos</a>
+                            <a href="{{ url('admin/products') }}">Modificar Productos</a>
                         </div>
                     @endif
                 </div>

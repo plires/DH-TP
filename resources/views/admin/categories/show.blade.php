@@ -10,7 +10,7 @@
    <div class="row">
       <div class="small-12 columns">
          <h1 class="back margin_top_15 text_center">Backend Admin</h1>
-         <h2 class="back">SHOW-Mostrar Categoria individual</h2>
+         <h2 class="back">Mostrar Categoria individual</h2>
       </div>
    </div>
    <div class="row">
