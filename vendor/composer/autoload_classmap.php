@@ -30,6 +30,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\CategoryCreateRequest' => $baseDir . '/app/Http/Requests/CategoryCreateRequest.php',
+    'App\\Http\\Requests\\DocumentTypeCreateRequest' => $baseDir . '/app/Http/Requests/DocumentTypeCreateRequest.php',
     'App\\Http\\Requests\\NewProductRequest' => $baseDir . '/app/Http/Requests/NewProductRequest.php',
     'App\\Image' => $baseDir . '/app/Image.php',
     'App\\Product' => $baseDir . '/app/Product.php',

@@ -51,7 +51,7 @@
    @include('footer.footer')
 
 <form action="{{ route('categories.destroy', ':CATEGORY_ID') }}" method="DELETE" id="form-delete">
-<input name="_method" type="hidden" value="DELETE">
+   <input name="_method" type="hidden" value="DELETE">
 {{ csrf_field() }}
 </form>
 @endsection

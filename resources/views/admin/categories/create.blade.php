@@ -39,7 +39,9 @@
                      {{ csrf_field() }}
                      <td class="text_center margin_top_15" colspan="3">
                         <input id="category" type="text" name="category" placeholder="Nombre de la nueva categoria" required>
-                        <a class="text_center" href="#"><button type="submit" class="small button"><i class="ion-plus-circled"></i> Agregar</button></a>
+                        <a class="text_center" href="#">
+                           <button type="submit" class="small button"><i class="ion-plus-circled"></i> Agregar</button>
+                        </a>
                      </td>
                   </form>
                </tr>

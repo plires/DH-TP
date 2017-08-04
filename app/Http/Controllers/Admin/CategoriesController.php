@@ -82,15 +82,14 @@ class categoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryCreateRequest $request, $id)
     {
-        $name = $request->input('category');
-        $slug = str_slug($name);
+        $category = Category::find($id);
+        $category->name = $request->category;
+        $category->slug = str_slug($request->category);
+        $category->save();
 
-        $usuario = Category::create([
-            'name' => $name,
-            'slug' => $slug
-        ]);
+        return redirect()->route('categories.index');
     }
 
     /**

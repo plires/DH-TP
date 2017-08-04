@@ -80,13 +80,13 @@ class documentTypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DocumentTypeCreateRequest $request, $id)
     {
-        $name = $request->input('document');
+        $documentType = DocumentType::find($id);
+        $documentType->name = $request->document;
+        $documentType->save();
 
-        DocumentType::create([
-            'name' => $name
-        ]);
+        return redirect()->route('document_types.index');
     }
 
     /**

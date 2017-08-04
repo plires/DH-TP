@@ -294,6 +294,7 @@ class ComposerStaticInited58e54d1aa04c6bc6833a2f4382bab3
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CategoryCreateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CategoryCreateRequest.php',
+        'App\\Http\\Requests\\DocumentTypeCreateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/DocumentTypeCreateRequest.php',
         'App\\Http\\Requests\\NewProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NewProductRequest.php',
         'App\\Image' => __DIR__ . '/../..' . '/app/Image.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
