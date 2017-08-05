@@ -38,8 +38,9 @@
     <script>
       $(document).foundation();
     </script>
+    <script src="{{ asset('js/ajaxCalls.js') }}"></script>
     @yield('scripts')
   </body>
 
-  
+
 </html>

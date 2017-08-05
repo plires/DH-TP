@@ -2,7 +2,6 @@
 
 use App\Category;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,4 +29,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 // Asi es para que deba estar logueado antes de ingresar
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'] ], function () {
     Route::resource('products', 'ProductsController');
+    Route::resource('favourites', 'FavouritesController');
 });

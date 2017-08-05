@@ -24,7 +24,7 @@
   </ul>
   <!--slider end-->
 
-  
+
   <!--Introduction start-->
   <div class="row">
     <div class="small-12 columns">
@@ -46,7 +46,7 @@
     <div class="small medium-8 medium-centered columns">
       <h3 class="h3_home">
         Por eso te proponemos que hagas lo que mas te gusta y mejor te sale, la cerveza...de lo aburrido nos encargamos nosotros y nuestra plataforma."
-      </h3>    
+      </h3>
     </div>
   </div>
   <!--Introduction end-->
@@ -57,9 +57,11 @@
 <section class="main_products">
 
   <div class="row">
+
     @foreach($products as $product)
+
       <div class="small-12 medium-4 columns">
-        <article class="item animated fadeInDown">
+        <article  data-id="{{ $product->id}}" class="item animated fadeInDown">
           <a href="#"><img src="{{ $product->images->src }}" alt="{{ $product->slug }}"></a>
           <div class="item_descuento boton_gris">
             20 % OFF
@@ -74,9 +76,9 @@
           <a href="#" class="boton_carrito boton_amarillo fadeIn">Agregar</a>
           <span class="precio">{{ $product->price  . ' $'}}</span>
         </article>
-      </div>        
+      </div>
     @endforeach
-  </div> 
+  </div>
   <div class="row">
     <div class="small-12 medium-4 medium-centered columns">
       {{ $products->links() }}
@@ -121,7 +123,7 @@
       <p class="avatar_titulo_comentarios">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat vomy nibh euismod tincidunt ut laoreet dolore magn.
       </p>
-    </div>    
+    </div>
   </div>
 
   <div class="row">
@@ -157,14 +159,14 @@
 
 <!--Section Categorias destacadas de usuarios start-->
 <section class="section_categorias_destacadas">
-  
+
   <div class="row">
     <div class="small-12 columns">
       <h2 class="text_center">Categorias Destacadas</h2>
       <hr>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente cupiditate sint earum cum cumque, veniam fugit dolore, deserunt neque ratione quaerat enim fuga, quibusdam repellat assumenda vel a modi eligendi.
-      </p>      
+      </p>
     </div>
   </div>
 
@@ -196,7 +198,7 @@
           </div>
         </article>
       </a>
-    </div>    
+    </div>
   </div>
 
   <div class="row">
@@ -227,7 +229,7 @@
           </div>
         </article>
       </a>
-    </div>    
+    </div>
   </div>
 
 </section>
@@ -280,7 +282,7 @@
     <div class="row">
       <!--NEWSLETTER start-->
       <div class="small-12 columns newsletter text_center">
-        <h5>SUSCRIBITE <span class="tipo_ligth">A NUESTRO NEWSLETTER</span></h5>  
+        <h5>SUSCRIBITE <span class="tipo_ligth">A NUESTRO NEWSLETTER</span></h5>
         <p>
           Enterate de las últimas novedades y tendencias sobre la cerveza artesanal.
         </p>

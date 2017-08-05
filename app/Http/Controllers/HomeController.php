@@ -7,6 +7,7 @@ use App\Product;
 use App\User;
 use App\Image;
 use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -31,10 +32,10 @@ class HomeController extends Controller
         $users = User::all();
         $images = Image::all();
 
-        $image = Image::where('product_id', '=' , 5)->get();
-        $favorites = User::find(Auth::user()->id)->favorites;
+        $image = Image::where('product_id', '=', 5)->get();
 
-        //return view('prueba', compact('products', 'userLogin', 'users', 'image', 'favorites'));
+        $favorites = User::with('favorites')->get()->find(Auth::user()->id)->favorites->pluck('id')->toarray();
+
         return view('home', compact('products', 'userLogin', 'users', 'image', 'favorites'));
     }
 }

@@ -10,7 +10,6 @@ use App\Http\Requests\EditProductRequest;
 use App\Product;
 use App\Image;
 
-
 class productsController extends Controller
 {
     /**
@@ -79,13 +78,12 @@ class productsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(EditProductRequest $request, $id)
-    {       
-
+    {
         $product = Product::find($id);
-        
+
 
         if ($request->img == null) {
-            $image = $request->img_id;            
+            $image = $request->img_id;
         } else {
             $imgUrl = $request->file('img')->store('public');
             $url = Storage::url($imgUrl);
@@ -97,7 +95,7 @@ class productsController extends Controller
             $image = Image::find($image);
             dd($image);
         }
-        
+
 
 
         $product->title = $request->title;
