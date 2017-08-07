@@ -56,6 +56,7 @@
         <input type="number" name="available" value="{{ $product->available }}">
 
         <label for="img">Foto de tu producto</label>
+        <img  src='{{ $product->images->src }}' class="imagen_products_show">
         <input id="fileupload" name="img" type="file" />
 
         <input name="img_id" value="{{ $product->image_id }}" type="hidden" />

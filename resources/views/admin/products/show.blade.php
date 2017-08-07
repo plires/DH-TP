@@ -19,8 +19,25 @@
 
   <hr>
 
+  <!--borrado con exito start-->
+  <div class="exito row">
+    <div class="small-12 columns">
+      El producto fue borrado con exito
+    </div>
+  </div>
+
+  <div class="exito row">
+      <div class="small-12 medium-4 columns medium-centered margin_top_15 text_center">
+         <a href="{{ url('admin/products') }}"><button class="small button">
+            <i class="ion-arrow-left-a"></i> Volver</button>
+         </a>
+      </div>
+   </div>
+
+  <!--borrado con exito end-->
+
   <!--Detalle producto start-->
-  <div class="row">
+  <div class="producto row">
     <div class="small-12 medium-6 columns">
       <h3 class="h3_product_show">Imágen</h3>
       <img  src='{{ $product->images->src }}'>
@@ -39,7 +56,7 @@
     </div>
   </div>
 
-  <div class="row margin_top_30">
+  <div class="producto row margin_top_30">
     <div class="small-12 columns">
       <h3 class="h3_product_show">Descipción</h3>
       <p>{{ $product->description }}</p>
@@ -52,7 +69,7 @@
   <!--Acciones start-->
   <div class="row margin_bottom_30 margin_top_30">
     <div class="small-12 columns">
-      <form action="{{ url('admin/products/'. $product->id) }}" method='POST'>
+      <form id="form-delete" action="{{ url('admin/products/'. $product->id) }}" method='POST'>
         {{ method_field('DELETE') }}
         {{ csrf_field() }}
         <button class="boton_cat boton_eliminar">
@@ -73,5 +90,43 @@
 @section('footer')
 
   @include('footer.footer')
+
+@endsection
+
+@section('scripts')
+
+<script>
+   $(document).ready(function(){
+      var producto = $('.producto');
+      var exito = $('.exito');
+
+      exito.fadeOut();
+
+
+
+      $('.boton_cat').click(function(e){
+
+         e.preventDefault();
+
+         //var row = $(this).parents('tr');
+         //var id = row.data('id');
+         
+         var form = $('#form-delete');
+
+         var url = form.attr('action');
+         var data = form.serialize();
+         producto.fadeOut();
+         exito.fadeIn();
+
+         $.post(url, data, function(result){
+            alert(result);            
+         }).fail(function(){
+            alert('Error en el servidor o el producto tiene atributos asociados. Intente mas tarde o elimine dichos atributos.');
+            producto.fadeIn();
+            exito.fadeOut();
+         });
+      });
+   });
+</script>   
 
 @endsection

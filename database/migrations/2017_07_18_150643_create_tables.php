@@ -59,9 +59,12 @@ class CreateTables extends Migration
             $table->text('title');
             $table->text('slug');
             $table->text('description');
-            $table->integer('price')->unsigned();            
-            $table->integer('image_id')->unsigned()->index();
-            $table->foreign('image_id')->references('id')->on('images');
+            $table->integer('price')->unsigned();
+            $table->integer('image_id')->unsigned();
+            $table->foreign('image_id')
+                ->unsigned()->index()
+                ->references('id')->on('images')
+                ->onDelete('cascade');
             $table->integer('category_id')->unsigned()->index();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('user_id')->unsigned();

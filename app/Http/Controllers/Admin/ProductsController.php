@@ -19,7 +19,7 @@ class productsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(10);
 
         return view('admin.products.index', compact('products'));
     }
@@ -31,6 +31,7 @@ class productsController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -81,7 +82,6 @@ class productsController extends Controller
     {
         $product = Product::find($id);
 
-
         if ($request->img == null) {
             $image = $request->img_id;
         } else {
@@ -89,15 +89,13 @@ class productsController extends Controller
             $url = Storage::url($imgUrl);
 
             $image = Image::create([
-              'src' => $url
+              'src' => $url,
+              'product_id' => $product->id
             ]);
 
-            $image = Image::find($image);
-            dd($image);
+            $image = $image->id;
         }
-
-
-
+        
         $product->title = $request->title;
         $product->slug = str_slug($request->title);
         $product->description = $request->description;
@@ -116,8 +114,15 @@ class productsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        Product::find($id)->delete();
+
+        $message = 'El producto fue borrado.';
+
+        if ($request->ajax()) {
+            return $message;
+        }
+        return redirect()->action('Admin\ProductsController@index');
     }
 }

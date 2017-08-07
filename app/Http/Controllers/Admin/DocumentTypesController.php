@@ -97,6 +97,7 @@ class documentTypesController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        
         DocumentType::find($id)->delete();
 
         $message = 'El tipo de documento fue eliminado.';

@@ -62,8 +62,17 @@
   </div>
 
 
+  <div class="row">
+    <div class="small-12 medium-4 medium-centered columns">
+      {{ $products->links() }}
+    </div>
+  </div>
 
-
+  <div class="row">
+    <div class="small-12 medium-4 columns medium-centered margin_top_15 text_center">
+       <a href="{{ url('admin/products/create') }}"><button class="small button"><i class="ion-plus-circled"></i> Agregar Producto</button></a>
+    </div>
+  </div>
 
 @endsection
 
