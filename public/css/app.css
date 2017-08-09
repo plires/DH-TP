@@ -86,8 +86,14 @@ a {
 
 /* Ancho Container Mobile */
 
+
 /*Slide Start*/
-.bx-wrapper{display: none;}
+
+.bx-wrapper {
+  display: none;
+}
+
+
 /*Slide End*/
 
 .container {
@@ -349,6 +355,20 @@ header a:hover {
   float: right;
   font-size: 0.75em;
   color: #666666;
+}
+
+.search-results {
+  background: #fff;
+  display: none;
+  padding: 20px 0;
+  width: 45%;
+  top: 40px;
+  position: relative;
+  z-index: 1000;
+}
+
+.search-results-list li {
+  padding: 5px;
 }
 
 
@@ -912,7 +932,9 @@ fieldset {
   text-align: right!important;
 }
 
-.hover_principal:hover{color: #fcc112}
+.hover_principal:hover {
+  color: #fcc112
+}
 
 
 /* alinea los textos */
@@ -1097,11 +1119,11 @@ ul.pagination {
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 
 @media (min-width: 640px) {
-
   /*Slide Start*/
-  .bx-wrapper{display: block;}
+  .bx-wrapper {
+    display: block;
+  }
   /*Slide End*/
-
   /*Contenedores y subcontenedores start*/
   .container {
     width: 100%;
@@ -1334,7 +1356,6 @@ ul.pagination {
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 
 @media (min-width: 768px) {
-
   /*ENCABEZADO*/
   .secondary-menu ul li a {
     margin-left: 20px;
@@ -1521,7 +1542,6 @@ ul.pagination {
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 
 @media (min-width: 1000px) {
-
   /* Slide Home START */
   #slider .slider_texto {
     width: 100%;

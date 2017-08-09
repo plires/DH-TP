@@ -67,7 +67,7 @@
                                 <a href="#">Mi Perfil</a>
                             </div>
                         @endif
-                        
+
                     </div>
                 </li>
                 @if (Auth::user() && Auth::user()->admin == 1)
@@ -85,12 +85,12 @@
                 <li><a href="#"><i class="ion-social-twitter"></i>Twitter</a></li>
                 <li><a href="#"><i class="ion-social-instagram"></i>Instagram</a></li>
                 <li><a href="#"><i class="ion-social-pinterest"></i>Pinterest</a></li>
-                
+
             </ul>
         </nav>
 
 
-        <div class="container-menu-bar"> 
+        <div class="container-menu-bar">
             <a href="#" class='main-menu-button'><i class="ion-navicon-round"></i></a>
             <nav class="secondary-menu">
                 <ul>
@@ -119,10 +119,16 @@
         <div class="sub_container">
 
             <div class="container-search-bar">
-                <form action="" method="get">
-                    <input class="text_search" type="text" placeholder="Ingresa tu busqueda" name="search" value="">
+                <form action="{{ route('search', ['term'] )}}"  method="get">
+                  {{ csrf_field() }}
+                    <input class="text_search" id='search-input' type="text" placeholder="Ingresa tu busqueda" name="search" value="">
                     <input class="submit_search" type="submit" name="search_header" value="Buscar">
                 </form>
+                <div class="search-results">
+                  <ul class='search-results-list'>
+
+                  </ul>
+                </div>
                 <div class="cuenta">
                     <a class="logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="{{ url('logout') }}">
                         <i class="ion-android-exit"></i> Logout

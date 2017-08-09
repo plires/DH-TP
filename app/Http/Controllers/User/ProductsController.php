@@ -13,7 +13,6 @@ use App\Product;
 use App\Http\Requests\NewProductRequest;
 use App\Http\Requests\EditProductRequest;
 
-
 class ProductsController extends Controller
 {
     /**
@@ -77,7 +76,7 @@ class ProductsController extends Controller
 
           $image->save();
 
-            return redirect()->action('User\ProductsController@index');
+          return redirect()->action('User\ProductsController@index');
       }
 
     /**
@@ -131,7 +130,7 @@ class ProductsController extends Controller
 
             $image = $image->id;
         }
-        
+
         $product->title = $request->title;
         $product->slug = str_slug($request->title);
         $product->description = $request->description;
@@ -158,5 +157,15 @@ class ProductsController extends Controller
         $product->delete();
 
         return redirect()->action('User\ProductsController@index');
+    }
+
+
+    public function search()
+    {
+        $parameter = request()->search_term;
+        $products = Product::where('title', 'like', '%'.$parameter.'%')->get();
+
+
+        return $products;
     }
 }

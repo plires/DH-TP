@@ -84,7 +84,6 @@ class FavouritesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -95,13 +94,14 @@ class FavouritesController extends Controller
      */
     public function destroy($id)
     {
-        // $product_id = request()->product_id;
-        // $user_id = request()->user_id;
-        //
-        // $product = Product::find($product_id);
-        // $user = User::find($user_id);
-        //
-        // $product->favorites()->sync($user);
+        $product_id = request()->product_id;
+        $user_id = request()->user_id;
+
+        $product = Product::find($product_id);
+        $user = User::find($user_id);
+
+        $product->favorites()->detach();
+
         return;
     }
 }

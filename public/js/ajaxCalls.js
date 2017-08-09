@@ -59,9 +59,8 @@ $(document).ready(function(){
 
          success: function(response) { // What to do if we succeed
 
-            var childrenFlag = $(element).children();
+          var childrenFlag = $(element).children();
            childrenFlag.removeClass('ion-flag-active');
-
 
          },
 
@@ -78,4 +77,44 @@ $(document).ready(function(){
 
   	/// End ajax calls
 
+
+  $('#search-input').keyup(function(){
+
+     if($(this).val() !== '' ){
+        $('.search-results').fadeIn();
+
+     }else{
+         $('.search-results').fadeOut();
+     }
+
+     var url = 'user/products/search/{term}';
+
+     var searchTerm = $(this).val();
+
+
+
+
+     $.ajax({
+       url: url,
+       type: 'GET',
+       data: ({
+         "search_term": searchTerm,
+       }),
+
+       success: function(response) { // What to do if we succeed
+          $('.search-results-list').empty();
+         $.each(response, function( index, value ) {
+            $('.search-results-list').append( "<li> <a href= "+ "/user/products/" + value.id + " >"  +  value.title + "  </a></li>" );
+         });
+
+
+       },
+
+       error: function(jqXHR, textStatus, errorThrown) {
+         alert('Hubo un error, intente mas tarde');
+       }
+     });
+
+
+    })
   });
