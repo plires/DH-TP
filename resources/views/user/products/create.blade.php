@@ -41,7 +41,7 @@
         <input type="text" name="title" value="{{ old('title') }}">
         
         <label for="description">Descripcion</label>
-        <textarea name="description" rows="8" cols="80"></textarea>
+        <textarea name="description" rows="8" cols="80">{{ old('description') }}</textarea>
         
         <label for="price">Precio</label>
         <input type="number" name="price" value="{{ old('price') }}">

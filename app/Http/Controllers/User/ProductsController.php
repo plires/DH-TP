@@ -11,6 +11,8 @@ use App\User;
 use App\Image;
 use App\Product;
 use App\Http\Requests\NewProductRequest;
+use App\Http\Requests\EditProductRequest;
+
 
 class ProductsController extends Controller
 {
@@ -25,7 +27,7 @@ class ProductsController extends Controller
         $user = Auth::user();
         $products = Product::with('Images')->where('user_id', $id)->get();
 
-        return view('products.index', compact('products', 'user'));
+        return view('user.products.index', compact('products', 'user'));
     }
 
     /**
@@ -37,7 +39,7 @@ class ProductsController extends Controller
     {
         $categories = Category::all();
         $user = Auth::user();
-        return view('products.create', compact('categories', 'user'));
+        return view('user.products.create', compact('categories', 'user'));
     }
 
     /**
@@ -75,7 +77,7 @@ class ProductsController extends Controller
 
           $image->save();
 
-          return redirect()->route('products.show', ['id' =>  $product->id]);
+            return redirect()->action('User\ProductsController@index');
       }
 
     /**
@@ -88,7 +90,7 @@ class ProductsController extends Controller
     {
         $product = Product::find($id);
 
-        return view('products.show', compact('product'));
+        return view('user.products.show', compact('product'));
     }
 
     /**
@@ -102,7 +104,7 @@ class ProductsController extends Controller
         $product = Product::find($id);
         $categories = Category::all();
 
-        return view('products.edit', compact('product', 'categories'));
+        return view('user.products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -112,33 +114,36 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(NewProductRequest $request, $id)
+    public function update(EditProductRequest $request, $id)
     {
         $product = Product::find($id);
 
+        if ($request->img == null) {
+            $image = $request->img_id;
+        } else {
+            $imgUrl = $request->file('img')->store('public');
+            $url = Storage::url($imgUrl);
 
-        $imgUrl = $request->file('img')->store('public');
-        $url = Storage::url($imgUrl);
+            $image = Image::create([
+              'src' => $url,
+              'product_id' => $product->id
+            ]);
 
-        $image = Image::create([
-          'src' => $url
-        ]);
-
-        $idUser = Auth::id();
-
-        $product->title = request()->title;
-        $product->slug = str_slug(request()->title);
-        $product->description = request()->description;
-        $product->price = request()->price;
-        $product->image_id = $image->id;
-        $product->category_id = request()->category_id;
-        $product->user_id = $idUser;
-        $product->available = request()->available;
+            $image = $image->id;
+        }
+        
+        $product->title = $request->title;
+        $product->slug = str_slug($request->title);
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->image_id = $image;
+        $product->category_id = $request->category_id;
+        $product->available = $request->available;
+        $product->save();
 
         $product->save();
 
-
-        return redirect()->route('products.show', ['id' =>  $id]);
+        return redirect()->action('User\ProductsController@index');
     }
 
     /**

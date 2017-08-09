@@ -86,6 +86,10 @@ a {
 
 /* Ancho Container Mobile */
 
+/*Slide Start*/
+.bx-wrapper{display: none;}
+/*Slide End*/
+
 .container {
   width: 95%;
   margin: auto;
@@ -904,6 +908,12 @@ fieldset {
   text-align: center;
 }
 
+.text_right {
+  text-align: right!important;
+}
+
+.hover_principal:hover{color: #fcc112}
+
 
 /* alinea los textos */
 
@@ -1087,9 +1097,11 @@ ul.pagination {
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 
 @media (min-width: 640px) {
+
   /*Slide Start*/
-  /*.bx-wrapper .bx-caption span{font-size:1.25em!important;padding:5px!important;}
-	/*Slide End*/
+  .bx-wrapper{display: block;}
+  /*Slide End*/
+
   /*Contenedores y subcontenedores start*/
   .container {
     width: 100%;
@@ -1322,6 +1334,7 @@ ul.pagination {
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 
 @media (min-width: 768px) {
+
   /*ENCABEZADO*/
   .secondary-menu ul li a {
     margin-left: 20px;
@@ -1508,6 +1521,7 @@ ul.pagination {
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 
 @media (min-width: 1000px) {
+
   /* Slide Home START */
   #slider .slider_texto {
     width: 100%;

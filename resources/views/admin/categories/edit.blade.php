@@ -33,6 +33,15 @@
          
       </div>
    </div>
+
+   <div class="row">
+      <div class="small-12 medium-4 columns medium-centered margin_top_15 text_center">
+         <a href="{{ route('categories.index') }}"><button class="small button">
+            <i class="ion-arrow-left-a"></i> Volver</button>
+         </a>
+      </div>
+   </div>
+   
 @endsection
 
 @section('footer')

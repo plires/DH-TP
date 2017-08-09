@@ -27,6 +27,7 @@ class NewProductRequest extends FormRequest
              "title" => 'required | min:3',
              "description" => 'required | min:10',
              "price" => 'required',
+             "available" => 'required',
              "img" => 'required',
 
         ];
@@ -38,6 +39,7 @@ class NewProductRequest extends FormRequest
      'title.required' => 'El título del producto es obligatorio',
      'description.required' => 'La descripción es obligatoria',
      'price.required' => 'El precio es obligatorio',
+     'available.required' => 'Ingrese un stock inicial',
      'img.required' => 'Suba una imágen para el producto',
       ];
     }

@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewProductRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Product;
 use App\Image;
+use App\Category;
 
 class productsController extends Controller
 {
@@ -31,7 +33,8 @@ class productsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -42,7 +45,34 @@ class productsController extends Controller
      */
     public function store(NewProductRequest $request)
     {
-        //
+        $imgUrl = $request->file('img')->store('public');
+
+        $url = Storage::url($imgUrl);
+
+        // dd($url);
+
+        $image = Image::create([
+        'src' => $url
+        ]);
+
+        $id = Auth::id();
+
+        $product = Product::create([
+        'title' => request()->title,
+        'slug' => str_slug(request()->title),
+        'description' => request()->description,
+        'price' => request()->price,
+        'image_id'=> $image->id,
+        'category_id' => request()->category_id,
+        'user_id'=> $id,
+        'available' => request()->available,
+        ]);
+
+        $image->product_id = $product->id;
+
+        $image->save();
+
+        return redirect()->action('Admin\ProductsController@index');
     }
 
     /**
@@ -53,7 +83,6 @@ class productsController extends Controller
      */
     public function show($id)
     {
-        // $product = Product::find($id);
         $product= Product::with('User', 'Images')->where('id', $id)->get()->first();
 
         return view('admin/products.show', compact('product'));
@@ -67,8 +96,9 @@ class productsController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
         $product = Product::where('id', $id)->first();
-        return view('admin.products.edit', compact('product'));
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**

@@ -19,19 +19,28 @@
          <table class="responsive cien margin_top_15">
             <tbody>
                <tr>
-                  <th>Productos</th>
+                  <th>Producto</th>
                   <th>Precio</th>
+                  <th>Categoria</th>
+                  <th class="text_right">Acciones</th>
                </tr>
                @foreach($products as $product)
                   @if(!isset($product->id))
                      <tr>
                         <td>Sin productos</td>
                         <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                      </tr>
                   @else
                      <tr data-id="{{ $product->id }}">
-                        <td>{{ $product->title }}</td>
+                        <td><a class="hover_principal" href="{{ url('admin/products', ['product'=> $product->id]) }}">{{ $product->title }}</a></td>
                         <td>{{ $product->price }}</td>
+                        <td>{{ $product->category->name }}</td>
+                        <td>
+                           <button class="boton_editar"><a href="{{ url('admin/products/'. $product->id .'/edit') }}">Editar</a></button>
+                           <button class="boton_editar"><a href="{{ url('admin/products', ['product'=> $product->id]) }}">Ver</a></button>
+                        </td>
                      </tr>
                   @endif
                @endforeach

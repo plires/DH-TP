@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\User;
 
@@ -16,7 +17,11 @@ class FavouritesController extends Controller
      */
     public function index()
     {
-        //
+        $id = Auth::id();
+        $user = Auth::user();
+        $products = Product::with('Images')->where('user_id', $id)->get();
+
+        return view('user.favourites.index', compact('products', 'user'));
     }
 
     /**

@@ -304,6 +304,7 @@
   <script src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
   <script>
     $('.bxslider').bxSlider({
+      auto: true,
       mode: 'fade',
       captions: true
     })

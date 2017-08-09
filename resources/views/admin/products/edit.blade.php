@@ -49,7 +49,9 @@
         
         <label for="category_id">Categoria</label>
         <select class="" name='category_id'>
-            <option value="{{ $product->category_id }}">{{ $product->category->name }}</option>
+          @foreach ($categories as $category)
+            <option {{ ($product->category->id == $category->id) ? 'selected' : "" }} value="{{ $category->id }}">{{ $category->name }}</option>
+          @endforeach
         </select>
 
         <label for="available">Stock disponible</label>

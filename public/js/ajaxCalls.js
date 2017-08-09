@@ -46,7 +46,7 @@ $(document).ready(function(){
 
      }else{
 
-       var url = '/user/favourites/{data}';
+       var url = '../user/favourites/{data}';
         console.log('borra favorito');
 
        $.ajax({

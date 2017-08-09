@@ -20,7 +20,7 @@
             <tr>
                <th>Nombre</th>
                <th>Slug</th>
-               <th>Acciones</th>
+               <th class="text_right">Acciones</th>
             </tr>
                @foreach($categories as $category)
                   <tr data-id="{{ $category->id }}">

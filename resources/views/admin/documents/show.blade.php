@@ -21,7 +21,8 @@
                <tr>
                   <th>Nombre y Apellido</th>
                   <th>Email</th>
-                  <th>Teléfono</th>
+                  <th>Tipo Documento</th>
+                  <th class="text_right">Acciones</th>
                </tr>
                @foreach($users as $user)
                   @if(!isset($user->id))
@@ -29,12 +30,17 @@
                         <td>Sin Usuarios</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                      </tr>
                   @else
                      <tr data-id="{{ $user->id }}">
                         <td>{{ $user->surname .', '. $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->phone }}</td>
+                        <td>{{ $user->documentType->name }}</td>
+                        <td>
+                           <button class="boton_editar"><a href="#">Editar</a></button>
+                           <button class="boton_editar"><a href="#">Ver Usuario</a></button>
+                        </td>
                      </tr>
                   @endif
                @endforeach

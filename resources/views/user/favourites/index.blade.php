@@ -11,11 +11,13 @@
   <div class="row">
     <div class="small-12 columns">
 
-      <div class="small-12 columns margin_top_15 ">
+      <div class="small-12 medium-10 medium-centered columns margin_top_15 text_center">
 
-         <h1 class="back margin_top_15 text_center">Backend Admin</h1>
-         <h2 class="back">Todos los Productos</h2>
-
+         <h3>Productos Favoritos de: {{ $user->name }}</h3>
+         <p>HACER QUE TRAIGA LOS FAVORITOS DE CADA USUARIO</p>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nesciunt non ex quo ab fuga, sint rerum. Repellat, nisi velit, voluptate a reiciendis totam non placeat voluptatem sint, expedita facilis!</p>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nesciunt non ex quo ab fuga, sint rerum. Repellat, nisi velit, voluptate a reiciendis totam non placeat voluptatem sint, expedita facilis!</p>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nesciunt non ex quo ab fuga, sint rerum. Repellat, nisi velit, voluptate a reiciendis totam non placeat voluptatem sint, expedita facilis!</p>
          <table class="responsive cien margin_top_15">
             <tbody>
                <tr>
@@ -24,39 +26,34 @@
                   <th>Precio</th>
                   <th>Categoria</th>
                   <th>Imágen</th>
-                  <th>Usuario</th>
                </tr>
                @foreach($products as $product)
                   @if(!isset($product->id))
                      <tr>
                         <td>Sin productos</td>
-                        <td>- </td>
-                        <td>- </td>
-                        <td>- </td>
-                        <td>- </td>
-                        <td>- </td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                      </tr>
                   @else
                      <tr data-id="{{ $product->id }}">
                         <td>{{ $product->id }}</td>
                         <td>
-                          <a class="link_products_show" href="{{ url('admin/products', ['id'=> $product->id]) }}">
+                          <a class="hover_principal link_products_show" href="{{ route('products.show', ['id'=> $product->id] )}}">
                             {{ $product->title }}
                           </a>
                         </td>
                         <td>{{ $product->price }}</td>
                         <td>
-                          <a class="link_products_show" href="{{ url('admin/categories', ['id'=> $product->category->id]) }}">
+                          <a class="hover_principal" href="{{ route('categories.show', ['id'=> $product->category->id] )}}">
                             {{ $product->category->name }}
                           </a>
                         </td>
                         <td>
-                          <a href="{{ url('admin/products', ['id'=> $product->id]) }}">
+                          <a href="{{ route('products.show', ['id'=> $product->id] )}}">
                             <img class="imagen_products_show" src="{{ $product->images->src }}" width="60px" height="60px" alt="{{ $product->title }}">
                           </a>
-                        </td>
-                        <td>
-                          <a class="hover_principal" href="mailto:{{ $product->user->email }}"> {{ $product->user->email }}</a>
                         </td>
                      </tr>
                   @endif
@@ -69,17 +66,8 @@
   </div>
 
 
-  <div class="row">
-    <div class="small-12 medium-4 medium-centered columns">
-      {{ $products->links() }}
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="small-12 medium-4 columns medium-centered margin_top_15 text_center">
-       <a href="{{ url('admin/products/create') }}"><button class="small button"><i class="ion-plus-circled"></i> Agregar Producto</button></a>
-    </div>
-  </div>
+
 
 @endsection
 

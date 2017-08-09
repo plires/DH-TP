@@ -63,7 +63,8 @@
                             <div class="desplega-content">
                                 <a href="{{ route('products.index') }}">Mis productos</a>
                                 <a href="{{ route('products.create') }}">Crear producto</a>
-                                <a href="#">Mis Favoritos</a>
+                                <a href="{{ route('favourites.index') }}">Mis Favoritos</a>
+                                <a href="#">Mi Perfil</a>
                             </div>
                         @endif
                         
@@ -76,6 +77,7 @@
                             <a href="{{ route('categories.index') }}">Modificar Categorias</a>
                             <a href="{{ route('document_types.index') }}">Modificar Tipos de Documento</a>
                             <a href="{{ url('admin/products') }}">Modificar Productos</a>
+                            <a href="#">Modificar Usuarios</a>
                         </div>
                     </div>
                 @endif
@@ -168,7 +170,8 @@
                         <div class="desplega-content">
                             <a href="{{ route('products.index') }}">Mis productos</a>
                             <a href="{{ route('products.create') }}">Crear producto</a>
-                            <a href="#">Favoritos</a>
+                            <a href="{{ route('favourites.index') }}">Mis Favoritos</a>
+                            <a href="#">Mi Perfil</a>
                         </div>
                     @endif
                 </div>
@@ -179,6 +182,7 @@
                             <a href="{{ route('categories.index') }}">Modificar Categorias</a>
                             <a href="{{ route('document_types.index') }}">Modificar Tipos de Documento</a>
                             <a href="{{ url('admin/products') }}">Modificar Productos</a>
+                            <a href="#">Modificar Usuarios</a>
                         </div>
                     @endif
                 </div>

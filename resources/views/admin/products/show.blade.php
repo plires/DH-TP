@@ -26,14 +26,6 @@
     </div>
   </div>
 
-  <div class="exito row">
-      <div class="small-12 medium-4 columns medium-centered margin_top_15 text_center">
-         <a href="{{ url('admin/products') }}"><button class="small button">
-            <i class="ion-arrow-left-a"></i> Volver</button>
-         </a>
-      </div>
-   </div>
-
   <!--borrado con exito end-->
 
   <!--Detalle producto start-->
@@ -67,7 +59,7 @@
   <hr>
 
   <!--Acciones start-->
-  <div class="row margin_bottom_30 margin_top_30">
+  <div class="producto row margin_bottom_30 margin_top_30">
     <div class="small-12 columns">
       <form id="form-delete" action="{{ url('admin/products/'. $product->id) }}" method='POST'>
         {{ method_field('DELETE') }}
@@ -84,6 +76,16 @@
     </div>
   </div>
   <!--Acciones end-->
+
+  <!--Volver Start-->
+  <div class="row">
+    <div class="small-12 medium-4 columns medium-centered margin_top_15 text_center">
+      <a href="{{ url('admin/products') }}"><button class="small button">
+        <i class="ion-arrow-left-a"></i> Volver</button>
+      </a>
+    </div>
+  </div>
+  <!--Volver end-->
 
 @endsection
 

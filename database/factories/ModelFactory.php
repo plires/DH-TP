@@ -47,7 +47,7 @@ $factory->define(App\Image::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
 
-  $title = $faker->text;
+  $title = $faker->name;
 
     return [
         'title' => $title,
