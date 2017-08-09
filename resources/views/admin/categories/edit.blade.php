@@ -10,7 +10,7 @@
    <div class="row">
       <div class="small-12 columns">
          <h1 class="back margin_top_15 text_center">Backend Admin</h1>
-         <h2 class="back">Edición de categoria de productos</h2>
+         <h2 class="back">Edición de la categoria: {{ $category->name }}</h2>
       </div>
    </div>
    <div class="row">

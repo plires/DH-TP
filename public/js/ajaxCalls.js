@@ -21,7 +21,7 @@ $(document).ready(function(){
 
      if( !childrenFlag.hasClass('ion-flag-active') ){
 
-       var url = '/user/favourites';
+       var url = '../user/favourites';
 
 
        $.ajax({
