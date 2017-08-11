@@ -90,7 +90,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.users.index', compact('users'));
+        $documentTypes = DocumentType::all();
+        $user = User::where('id', $id)->first();
+        return view('admin.users.edit', compact('user', 'documentTypes'));
     }
 
     /**
@@ -102,7 +104,32 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return view('admin.users.index', compact('users'));
+        $user = User::find($id);
+
+        if ($request->img == null) {
+            $url = $request->img_id;            
+        } else {
+            $imgUrl = $request->file('img')->store('public');
+            $url = Storage::url($imgUrl);           
+        }
+
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+
+        if ($request->password != null) {
+            $user->password = bcrypt(request()->password);            
+        }     
+
+        $user->document_id = $request->documentType;
+        $user->document = $request->document;
+        $user->src = $url;            
+        $user->phone = $request->phone;
+        $user->admin = $request->admin;
+
+        $user->save();
+
+        return redirect()->action('Admin\UsersController@index');
     }
 
     /**
