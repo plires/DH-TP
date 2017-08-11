@@ -36,22 +36,22 @@
     </div>
     <div class="small-12 medium-6 columns">
       <h3 class="h3_product_show">Titulo</h3>
-      <p>{{ $product->title }}</p>
+      <p class="p_post_h3">{{ $product->title }}</p>
       <h3 class="h3_product_show">Categoría</h3>
-      <p>{{ $product->category->name }}</p>
+      <p class="p_post_h3">{{ $product->category->name }}</p>
       <h3 class="h3_product_show">Dueño del producto</h3>
-      <p>{{ $product->user->name .' '. $product->user->surname }}</p>
+      <p class="p_post_h3">{{ $product->user->name .' '. $product->user->surname }}</p>
       <h3 class="h3_product_show">Existencias</h3>
-      <p>{{ $product->available }}</p>
+      <p class="p_post_h3">{{ $product->available }}</p>
       <h3 class="h3_product_show">Precio</h3>
-      <p>{{ $product->price }}</p>
+      <p class="p_post_h3">{{ $product->price }}</p>
     </div>
   </div>
 
   <div class="producto row margin_top_30">
     <div class="small-12 columns">
       <h3 class="h3_product_show">Descipción</h3>
-      <p>{{ $product->description }}</p>
+      <p class="p_post_h3">{{ $product->description }}</p>
     </div>
   </div>
   <!--Detalle producto end-->

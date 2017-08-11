@@ -998,6 +998,12 @@ section.fondo_color_principal {
   margin-top: 30px;
 }
 
+.p_post_h3{
+  margin-top: 5px;
+  padding-left: 15px;
+}
+
+
 .no_visible {
   display: none!important;
 }
@@ -1099,7 +1105,6 @@ ul.pagination {
 .ion-flag-active {
   color: #fff;
 }
-
 
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 

@@ -77,7 +77,7 @@
                             <a href="{{ route('categories.index') }}">Modificar Categorias</a>
                             <a href="{{ route('document_types.index') }}">Modificar Tipos de Documento</a>
                             <a href="{{ url('admin/products') }}">Modificar Productos</a>
-                            <a href="#">Modificar Usuarios</a>
+                            <a href="{{ url('admin/users') }}">Modificar Usuarios</a>
                         </div>
                     </div>
                 @endif
@@ -188,7 +188,7 @@
                             <a href="{{ route('categories.index') }}">Modificar Categorias</a>
                             <a href="{{ route('document_types.index') }}">Modificar Tipos de Documento</a>
                             <a href="{{ url('admin/products') }}">Modificar Productos</a>
-                            <a href="#">Modificar Usuarios</a>
+                            <a href="{{ url('admin/users') }}">Modificar Usuarios</a>
                         </div>
                     @endif
                 </div>
