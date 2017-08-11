@@ -1,3 +1,5 @@
+
+
 @extends('layouts.app')
 
 
@@ -68,15 +70,11 @@
           </div>
             @if (Auth::user())
 
-              @if( in_array (  $product->id  , $favorites ) )
+              @if( in_array(  $product->id  , $favorites ) )
                 <a title="Agregar a Favoritos" class="favoritos_home" href=""><i class ="ion-flag ion-flag-active"></i></a>
-
               @else
-
                 <a title="Agregar a Favoritos" class="favoritos_home" href=""><i class ="ion-flag"></i></a>
-
               @endif
-
 
             @endif
           <h2>{{ $product->title }}</h2>

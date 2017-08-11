@@ -50,7 +50,7 @@ class FavouritesController extends Controller
         $product = Product::find($product_id);
         $user = User::find($user_id);
 
-        $product->favorites()->sync($user);
+        $product->favorites()->attach($user);
     }
 
     /**

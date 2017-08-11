@@ -31,5 +31,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'] ], function () {
     Route::resource('products', 'ProductsController');
     Route::resource('favourites', 'FavouritesController');
-    Route::get('products/search/{term}', 'ProductsController@search')->name('search');
 });
+
+
+Route::get('search/{term}', 'SearchController@search')->name('search');

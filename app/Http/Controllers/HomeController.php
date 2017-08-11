@@ -28,6 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $userLogin = Auth::user();
+
         $products = Product::paginate(9);
         $users = User::all();
         $images = Image::all();
@@ -35,6 +36,8 @@ class HomeController extends Controller
         $image = Image::where('product_id', '=', 5)->get();
 
         $favorites = User::with('favorites')->get()->find(Auth::user()->id)->favorites->pluck('id')->toarray();
+
+
 
         return view('home', compact('products', 'userLogin', 'users', 'image', 'favorites'));
     }

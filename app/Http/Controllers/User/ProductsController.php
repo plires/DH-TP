@@ -158,14 +158,4 @@ class ProductsController extends Controller
 
         return redirect()->action('User\ProductsController@index');
     }
-
-
-    public function search()
-    {
-        $parameter = request()->search_term;
-        $products = Product::where('title', 'like', '%'.$parameter.'%')->get();
-
-
-        return $products;
-    }
 }

@@ -358,7 +358,7 @@ header a:hover {
 }
 
 .search-results {
-  background: #fff;
+  background: #414042;
   display: none;
   padding: 20px 0;
   width: 45%;
@@ -368,7 +368,16 @@ header a:hover {
 }
 
 .search-results-list li {
-  padding: 5px;
+  padding: 10px;
+  border-bottom: 1px solid #777;
+}
+
+.search-results-list li:hover {
+  background: #6B6A6D;
+}
+
+.search-results-list li a {
+  color: #fcc112;
 }
 
 
@@ -998,11 +1007,10 @@ section.fondo_color_principal {
   margin-top: 30px;
 }
 
-.p_post_h3{
+.p_post_h3 {
   margin-top: 5px;
   padding-left: 15px;
 }
-
 
 .no_visible {
   display: none!important;
@@ -1105,6 +1113,7 @@ ul.pagination {
 .ion-flag-active {
   color: #fff;
 }
+
 
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 

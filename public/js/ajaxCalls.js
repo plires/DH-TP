@@ -23,7 +23,6 @@ $(document).ready(function(){
 
        var url = '../user/favourites';
 
-
        $.ajax({
          url: url,
          type: 'POST',
@@ -46,7 +45,7 @@ $(document).ready(function(){
 
      }else{
 
-       var url = '../user/favourites/{data}';
+        var url = '../user/favourites/{data}';
         console.log('borra favorito');
 
        $.ajax({
@@ -87,7 +86,7 @@ $(document).ready(function(){
          $('.search-results').fadeOut();
      }
 
-     var url = 'user/products/search/{term}';
+     var url = 'search/{term}';
 
      var searchTerm = $(this).val();
 

@@ -39,7 +39,7 @@ class CreateTables extends Migration
             $table->string('password');
             $table->integer('document_id')->unsigned();
             $table->foreign('document_id')->references('id')->on('document_types');
-            $table->integer('document')->unsigned();            
+            $table->integer('document')->unsigned();
             $table->text('src');
             $table->string('phone');
             $table->boolean('admin');
@@ -80,7 +80,7 @@ class CreateTables extends Migration
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
-        });                
+        });
     }
 
     /**
