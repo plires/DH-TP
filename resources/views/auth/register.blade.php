@@ -101,6 +101,9 @@
                             </div>
                         </div>
 
+                        <label for="img">Foto de tu Perfil</label>
+                        <input id="fileupload" name="img" type="file" />
+
                         <div class="row form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
                             <div class="small-12 columns">

@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'] ], function () {
     Route::resource('products', 'ProductsController');
     Route::resource('favourites', 'FavouritesController');
+    Route::resource('profile', 'ProfileController');
 });
 
 

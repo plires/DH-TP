@@ -13,11 +13,8 @@
 
       <div class="small-12 medium-10 medium-centered columns margin_top_15 text_center">
 
-         <h3>Productos Favoritos de: {{ $user->name }}</h3>
-         <p>HACER QUE TRAIGA LOS FAVORITOS DE CADA USUARIO</p>
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nesciunt non ex quo ab fuga, sint rerum. Repellat, nisi velit, voluptate a reiciendis totam non placeat voluptatem sint, expedita facilis!</p>
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nesciunt non ex quo ab fuga, sint rerum. Repellat, nisi velit, voluptate a reiciendis totam non placeat voluptatem sint, expedita facilis!</p>
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nesciunt non ex quo ab fuga, sint rerum. Repellat, nisi velit, voluptate a reiciendis totam non placeat voluptatem sint, expedita facilis!</p>
+         <h3>Productos Favoritos de: {{ $user->name .' '. $user->surname }}</h3>
+
          <table class="responsive cien margin_top_15">
             <tbody>
                <tr>

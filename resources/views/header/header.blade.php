@@ -64,7 +64,7 @@
                                 <a href="{{ route('products.index') }}">Mis productos</a>
                                 <a href="{{ route('products.create') }}">Crear producto</a>
                                 <a href="{{ route('favourites.index') }}">Mis Favoritos</a>
-                                <a href="#">Mi Perfil</a>
+                                <a href="{{ route('profile.index') }}">Mi Perfil</a>
                             </div>
                         @endif
 
@@ -177,7 +177,7 @@
                             <a href="{{ route('products.index') }}">Mis productos</a>
                             <a href="{{ route('products.create') }}">Crear producto</a>
                             <a href="{{ route('favourites.index') }}">Mis Favoritos</a>
-                            <a href="#">Mi Perfil</a>
+                            <a href="{{ route('profile.index') }}">Mi Perfil</a>
                         </div>
                     @endif
                 </div>

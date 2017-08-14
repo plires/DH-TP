@@ -66,6 +66,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //dd($data);
+        /*
+        $imgUrl = $data['img'];
+
+        $url = Storage::url($imgUrl);
+
+        $image = Image::create([
+        'src' => $url
+        ]);
+
+        $image->save();
+*/
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],

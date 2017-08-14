@@ -7,8 +7,16 @@
 @endsection
 
 @section('content')
+	
+	<!--borrado con exito start-->
+	<div class="exito row">
+		<div class="small-12 columns">
+		  El usuario fue borrado con exito
+		</div>
+	</div>
+		<!--borrado con exito end-->
 
-	<div class="row margin_top_15">
+	<div class="usuario row margin_top_15">
 
 		<div class="small-12 medium-6 columns">
 			<h3 class="h3_product_show">Nombre</h3>
@@ -31,16 +39,21 @@
 
 	</div>
 
-	<!--Acciones Start-->
-	<div class="row">
-		<div class="small-12 columns margin_bottom_30 margin_top_30">
-			<button class="boton_eliminar">
-				<a href="{{ url('admin/users/'. $user->id .'/edit') }}">Eliminar</a>
-			</button>
+	<!--Acciones start-->
+	<div class="usuario row margin_bottom_30 margin_top_30">
+		<div class="small-12 columns">
+		  <form id="form-delete" action="{{ url('admin/users/'. $user->id) }}" method='POST'>
+		    {{ method_field('DELETE') }}
+		    {{ csrf_field() }}
+		    <button class="boton_cat boton_eliminar">
+		      Eliminar
+		    </button>
+		  </form>
 
-			<button class="boton_editar">
-				<a href="{{ url('admin/users/'. $user->id .'/edit') }}">Editar</a>
-			</button>
+		    <button type="submit" class="boton_editar">
+		      <a href="{{ url('admin/users/'. $user->id .'/edit') }}">Editar</a>
+		    </button>
+
 		</div>
 	</div>
 	<!--Acciones end-->
@@ -61,5 +74,38 @@
 @section('footer')
 
   @include('footer.footer')
+
+@endsection
+
+@section('scripts')
+
+<script>
+   $(document).ready(function(){
+      var usuario = $('.usuario');
+      var exito = $('.exito');
+
+      exito.fadeOut();
+
+      $('.boton_cat').click(function(e){
+
+         e.preventDefault();
+
+         var form = $('#form-delete');
+
+         var url = form.attr('action');
+         var data = form.serialize();
+         usuario.fadeOut();
+         exito.fadeIn();
+
+         $.post(url, data, function(result){
+            alert(result);            
+         }).fail(function(){
+            alert('Error en el servidor o el usuario tiene atributos asociados. Intente mas tarde o elimine dichos atributos.');
+            producto.fadeIn();
+            exito.fadeOut();
+         });
+      });
+   });
+</script>   
 
 @endsection

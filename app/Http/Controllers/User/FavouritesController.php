@@ -19,7 +19,8 @@ class FavouritesController extends Controller
     {
         $id = Auth::id();
         $user = Auth::user();
-        $products = Product::with('Images')->where('user_id', $id)->get();
+
+        $products = Product::with('favorites')->where('user_id', $id)->get();
 
         return view('user.favourites.index', compact('products', 'user'));
     }

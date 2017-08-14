@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\NewUserRequest;
+use App\Http\Requests\EditUserRequest;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Image;
@@ -102,8 +102,8 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(EditUserRequest $request, $id)
+    {  
         $user = User::find($id);
 
         if ($request->img == null) {
@@ -119,7 +119,7 @@ class UsersController extends Controller
 
         if ($request->password != null) {
             $user->password = bcrypt(request()->password);            
-        }     
+        }
 
         $user->document_id = $request->documentType;
         $user->document = $request->document;
@@ -138,8 +138,15 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        return view('admin.users.index', compact('users'));
+        User::find($id)->delete();
+
+        $message = 'El usuario fue borrado.';
+
+        if ($request->ajax()) {
+            return $message;
+        }
+        return redirect()->action('Admin\ProductsController@index');
     }
 }
