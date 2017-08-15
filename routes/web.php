@@ -14,11 +14,15 @@ use App\Category;
 */
 view()->share('categoriesMenu', Category::all());
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/faq', 'FaqController@index')->name('faq');
+Route::get('search/{term}', 'SearchController@search')->name('search');
+
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth.admin']], function () {
     Route::resource('products', 'ProductsController');
@@ -32,7 +36,5 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
     Route::resource('products', 'ProductsController');
     Route::resource('favourites', 'FavouritesController');
     Route::resource('profile', 'ProfileController');
+    Route::get('search/{term}', 'SearchOnUserController@search')->name('search-user');
 });
-
-
-Route::get('search/{term}', 'SearchController@search')->name('search');

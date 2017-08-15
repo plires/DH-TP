@@ -50,10 +50,10 @@
                                 <select name="document_id" id="document_id">
                                     @foreach($documentTypes as $documentType)
                                         <option value="{{ $documentType->id }}">{{ $documentType->name }}</option>
-                                    @endforeach                                    
+                                    @endforeach
                                 </select>
                                 <table>
-                                
+
                                 </table>
 
                             </div>

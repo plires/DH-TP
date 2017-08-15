@@ -119,7 +119,11 @@
         <div class="sub_container">
 
             <div class="container-search-bar">
+              @if( Auth::user())
+                <form action="{{ route('search-user', ['term'] )}}"  method="get">
+              @else
                 <form action="{{ route('search', ['term'] )}}"  method="get">
+              @endif
                   {{ csrf_field() }}
                     <input class="text_search" id='search-input' type="text" placeholder="Ingresa tu busqueda" name="search" value="">
                     <input class="submit_search" type="submit" name="search_header" value="Buscar">

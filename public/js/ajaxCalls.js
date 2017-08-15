@@ -23,6 +23,7 @@ $(document).ready(function(){
 
        var url = '../user/favourites';
 
+
        $.ajax({
          url: url,
          type: 'POST',
@@ -86,15 +87,14 @@ $(document).ready(function(){
          $('.search-results').fadeOut();
      }
 
-     var url = 'search/{term}';
+     var formUrl = $(this).closest('form').attr( 'action' );
+
 
      var searchTerm = $(this).val();
 
 
-
-
      $.ajax({
-       url: url,
+       url: formUrl,
        type: 'GET',
        data: ({
          "search_term": searchTerm,

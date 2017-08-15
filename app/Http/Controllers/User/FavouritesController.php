@@ -43,8 +43,6 @@ class FavouritesController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd(request()->data);
         $product_id = request()->product_id;
         $user_id = request()->user_id;
 
@@ -101,7 +99,7 @@ class FavouritesController extends Controller
         $product = Product::find($product_id);
         $user = User::find($user_id);
 
-        $product->favorites()->detach();
+        $product->favorites()->detach($user);
 
         return;
     }

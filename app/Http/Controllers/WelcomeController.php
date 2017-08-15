@@ -15,7 +15,7 @@ class WelcomeController extends Controller
      *
      * @return void
      */
- 
+
 
     /**
      * Show the application dashboard.
@@ -27,6 +27,17 @@ class WelcomeController extends Controller
         $products = Product::paginate(9);
         $images = Image::all();
 
-        return view('welcome', compact('products', 'images'));
+        if (Auth::user()) {
+            $users = User::all();
+            $images = Image::all();
+
+            $image = Image::where('product_id', '=', 5)->get();
+
+            $favorites = User::with('favorites')->get()->find(Auth::user()->id)->favorites->pluck('id')->toarray();
+        }
+
+
+
+        return view('welcome', compact('products', 'images', 'userLogin', 'users', 'image', 'favorites'));
     }
 }

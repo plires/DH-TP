@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\DocumentType;
 use App\Product;
@@ -27,16 +28,17 @@ class User extends Authenticatable
 
     public function documentType()
     {
-      return $this->belongsTo(DocumentType::class, 'document_id', 'id');
+        return $this->belongsTo(DocumentType::class, 'document_id', 'id');
     }
 
     public function products()
     {
-      return $this->hasMany(Product::class, 'user_id', 'id');
+        return $this->hasMany(Product::class, 'user_id', 'id');
     }
 
     public function favorites()
     {
-      return $this->belongsToMany(Product::class, 'product_user', 'user_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'product_user', 'product_id', 'user_id');
+        ;
     }
 }

@@ -57,7 +57,9 @@
 <section class="main_products">
 
   <div class="row">
-
+    @if(Auth::user())
+      <input type="hidden" class='user-id' data-id="{{ Auth::user()->id }}">
+    @endif
     @foreach($products as $product)
 
       <div class="small-12 medium-4 columns">
@@ -66,9 +68,15 @@
           <div class="item_descuento boton_gris">
             20 % OFF
           </div>
-            @if (Auth::user())
-              <a title="Agregar a Favoritos" class="favoritos_home" href="#"><i class ="ion-flag"></i></a>
+          @if (Auth::user())
+
+            @if( in_array(  $product->id  , $favorites ) )
+              <a title="Agregar a Favoritos" class="favoritos_home" href=""><i class ="ion-flag ion-flag-active"></i></a>
+            @else
+              <a title="Agregar a Favoritos" class="favoritos_home" href=""><i class ="ion-flag"></i></a>
             @endif
+
+          @endif
           <h2>{{ $product->title }}</h2>
           <p title="Aroma, color y cuerpo intenso. Alto contenido de lúpulo y con malta seleccionada." >
             {{ $product->description }}
