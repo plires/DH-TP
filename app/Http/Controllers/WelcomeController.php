@@ -29,15 +29,12 @@ class WelcomeController extends Controller
 
         if (Auth::user()) {
             $users = User::all();
-            $images = Image::all();
-
             $image = Image::where('product_id', '=', 5)->get();
-
             $favorites = User::with('favorites')->get()->find(Auth::user()->id)->favorites->pluck('id')->toarray();
         }
 
 
 
-        return view('welcome', compact('products', 'images', 'userLogin', 'users', 'image', 'favorites'));
+        return view('welcome', compact('products', 'images', 'users', 'image', 'favorites'));
     }
 }

@@ -57,7 +57,9 @@
 <section class="main_products">
 
   <div class="row">
-    @if(Auth::user())
+
+
+   @if(Auth::user())
       <input type="hidden" class='user-id' data-id="{{ Auth::user()->id }}">
     @endif
     @foreach($products as $product)

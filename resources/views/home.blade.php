@@ -68,6 +68,7 @@
           <div class="item_descuento boton_gris">
             20 % OFF
           </div>
+          {{-- {{    dd($favorites)}}  --}}
             @if (Auth::user())
 
               @if( in_array(  $product->id  , $favorites ) )
