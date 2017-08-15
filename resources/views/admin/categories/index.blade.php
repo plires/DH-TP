@@ -27,7 +27,7 @@
                      <td>{{ $category->name }}</td>
                      <td>{{ $category->slug }}</td>
                      <td>
-                        <button class="boton_cat boton_eliminar">Eliminar</button>
+                        <button class="boton_cat boton_eliminar" >Eliminar</button>
                         <button class="boton_editar"><a href="{{ route('categories.edit', ['category'=> $category->id] )}}">Editar</a></button>
                         <button class="boton_editar"><a href="{{ route('categories.show', ['category'=> $category->id] )}}">Mostrar</a></button>
                      </td>
@@ -62,6 +62,9 @@
 <script>
    $(document).ready(function(){
       $('.boton_cat').click(function(e){
+         confirm(message, callback);
+
+
 
          e.preventDefault();
 

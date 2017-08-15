@@ -126,13 +126,10 @@
               @endif
                   {{ csrf_field() }}
                     <input class="text_search" id='search-input' type="text" placeholder="Ingresa tu busqueda" name="search" value="">
-                    <input class="submit_search" type="submit" name="search_header" value="Buscar">
+                    <input class="submit_search" name="search_header" value="Buscar">
                 </form>
-                <div class="search-results">
-                  <ul class='search-results-list'>
 
-                  </ul>
-                </div>
+                
                 <div class="cuenta">
                     <a class="logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="{{ url('logout') }}">
                         <i class="ion-android-exit"></i> Logout
@@ -144,6 +141,12 @@
                     <p class='user-name'>{{ Auth::user() ? 'Bienvenido, ' . Auth::user()->name : 'Hola, Invitado'}}</p>
                     <a href="#" class="home-icon"><i class="ion-ios-home"></i></a>
                 </div>
+            </div>
+            
+            <div class="search-results">
+              <ul class='search-results-list'>
+
+              </ul>
             </div>
 
         </div>

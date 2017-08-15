@@ -38,8 +38,12 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->documentType->name }}</td>
                         <td>
-                           <button class="boton_editar"><a href="#">Editar</a></button>
-                           <button class="boton_editar"><a href="#">Ver Usuario</a></button>
+                           <button class="boton_editar">
+                              <a href="{{ url('admin/users/'. $user->id .'/edit') }}">Editar</a>
+                           </button>
+                           <button class="boton_editar">
+                              <a href="{{ url('admin/users', ['id'=> $user->id]) }}">Ver Usuario</a>
+                           </button>
                         </td>
                      </tr>
                   @endif

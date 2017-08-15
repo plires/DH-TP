@@ -321,8 +321,9 @@ header a:hover {
 .submit_search {
   float: right;
   width: 30%;
-  color: #000000;
-  padding: 5px;
+  padding-left: 20px!important;
+  color: #ffffff!important;
+  background-color: #666666!important;
   border: none;
   font-size: 1em;
   border: solid 1px #D6D5D6;
@@ -362,7 +363,7 @@ header a:hover {
   display: none;
   padding: 20px 0;
   width: 45%;
-  top: 40px;
+  top: 35px;
   position: relative;
   z-index: 1000;
 }
@@ -1203,6 +1204,7 @@ ul.pagination {
   }
   /*boton submit buscador header*/
   .submit_search {
+
     float: left;
     max-width: 10%;
   }

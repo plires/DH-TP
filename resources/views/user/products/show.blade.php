@@ -52,7 +52,7 @@
   <!--Acciones start-->
   <div class="row margin_bottom_30 margin_top_30">
     <div class="small-12 columns">
-      <form action="{{ route('products.destroy', ['id'=> $product->id] )}}" method='POST'>
+      <form onsubmit ="return confirm('Esta seguro de eliminar el producto?')" action="{{ route('products.destroy', ['id'=> $product->id] )}}" method='POST'>
         {{ method_field('DELETE') }}
         {{ csrf_field() }}
         <button type="submit" class="boton_cat boton_eliminar">

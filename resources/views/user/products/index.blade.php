@@ -42,7 +42,7 @@
                         </td>
                         <td>{{ $product->price }}</td>
                         <td>
-                          <a class="hover_principal" href="{{ route('categories.show', ['id'=> $product->category->id] )}}">
+                          <a class="hover_principal" href="{{ route('products.show', ['id'=> $product->id] )}}">
                             {{ $product->category->name }}
                           </a>
                         </td>

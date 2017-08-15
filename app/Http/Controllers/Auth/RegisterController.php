@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\DocumentType;
-use App\Image;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -38,10 +35,9 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request)
+    public function __construct()
     {
         $this->middleware('guest');
-        $this->request = $request;
     }
 
     /**
@@ -70,23 +66,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //dd($data);
-        /*
-        $imgUrl = $data['img'];
-
-        $url = Storage::url($imgUrl);
-
-        $image = Image::create([
-        'src' => $url
-        ]);
-
-        $image->save();
-
-
-*/
-
-        
-
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -94,12 +73,9 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'document_id' => $data['document_id'],
             'document' => $data['document'],
-            'src' => $image->src,
             'phone' => $data['phone']
         ]);
     }
-
-
 
     public function showRegistrationForm()
     {
